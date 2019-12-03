@@ -6,5 +6,4 @@ function handleOrientation(event) {
   var beta     = event.beta;
   var gamma    = event.gamma;
 
-  document.getElementById("test").innerHTML = beta;
 }

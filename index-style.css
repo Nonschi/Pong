@@ -1,0 +1,9 @@
+
+#bar {
+  position: absolute;
+  bottom   : 40px;
+  left  : 50%;
+  width : 70px;
+  height: 10px;
+  background: black;
+}
