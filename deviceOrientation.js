@@ -4,14 +4,14 @@ var win = window,
     docElem = doc.documentElement,
     body = doc.getElementsByTagName('body')[0],
     x = win.innerWidth || docElem.clientWidth || body.clientWidth,
-    y = win.innerHeight|| docElem.clientHeight|| body.clientHeight
-
 
 
 function handleOrientation(event) {
     var bar = document.getElementById("bar");
   var rotation = event.gamma;
-  document.getElementById("testing").innerHTML = "values are: " + rotation.toString();
-  bar.style.left = rotation/90  + "px";
+  document.getElementById("testing-rotation").innerHTML = "rotation is: " + rotation.toString();
+  bar.style.left =(x*rotation/90 - 40) + "px";
+  var pixels = (x*rotation/90 - 40);
+  document.getElementById("testing-pixels").innerHTML = "pixels are: " + pixels.toString();
 }
 window.addEventListener("deviceorientation", handleOrientation, true);
