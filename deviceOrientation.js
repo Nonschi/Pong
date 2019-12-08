@@ -6,8 +6,8 @@ function handleOrientation(event) {
     var bar = document.getElementById("bar");
     var maxX = document.getElementsByTagName('body')[0].clientWidth
     var rotation = event.gamma;
-    var pixels = (maxX * rotation / 180);
-    var position = ((maxX * rotation) / 180) - 40;
+    var pixels = (maxX * rotation / 90);
+    var position = (maxX * rotation) / 90) - 40;
     document.getElementById("clientWidth").innerHTML = "clientWidth is: " + maxX;
     document.getElementById("testing-new-position").innerHTML = "new position is:" + position;
     document.getElementById("testing-rotation").innerHTML = "rotations are:" + rotation;
