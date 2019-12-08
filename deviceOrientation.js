@@ -52,7 +52,7 @@ function drawBall() {
     context.arc(x , y,10,0,Math.PI*2,true);
     context.closePath();
     context.fill();
-    if(x < right && x > left && y < top && y > bottom) {
+    if(x < right) {
         dx=-dx
         dy=-dy;
     }
