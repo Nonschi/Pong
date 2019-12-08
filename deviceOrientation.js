@@ -1,6 +1,8 @@
 
 
 function handleOrientation(event) {
+
+
     var bar = document.getElementById("bar");
     var maxX = document.getElementsByTagName('body')[0].clientWidth
     var rotation = event.gamma;
@@ -14,4 +16,6 @@ function handleOrientation(event) {
         bar.style.left = position + "px";
     }
 }
+
+
 window.addEventListener("deviceorientation", handleOrientation, true);
