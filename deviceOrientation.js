@@ -9,7 +9,8 @@ function handleOrientation(event) {
     document.getElementById("clientWidth").innerHTML = "clientWidth is: " + maxX;
     document.getElementById("testing-rotation").innerHTML = "rotations are:" + rotation;
     document.getElementById("testing-pixels").innerHTML = "pixels are:" + pixels;
-
-    bar.style.left = (maxX * rotation / 180) + "px";
+    if(pixles > 0 && pixels < maxX) {
+        bar.style.left = (maxX * rotation / 180)  + (maxX/2)+ "px";
+    }
 }
 window.addEventListener("deviceorientation", handleOrientation, true);
