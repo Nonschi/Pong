@@ -12,7 +12,7 @@ function handleOrientation(event) {
     document.getElementById("testing-new-position").innerHTML = "new position is:" + position;
     document.getElementById("testing-rotation").innerHTML = "rotations are:" + rotation;
     document.getElementById("testing-pixels").innerHTML = "pixels are:" + pixels;
-    if(position > 0 && (position) < (maxX - 64) {
+    if(position > 0 && (position) < (maxX - 64)) {
         bar.style.left = position + "px";
     }
 }
