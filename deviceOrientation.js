@@ -1,40 +1,71 @@
 var counter = 4;
-var interval;
+var intervalCounter;
+var intervalBall;
+var maxY = screen.height
+var maxX = screen.width
+var dx=5;
+var dy=5;
+var x;
+var y = 100;
+
+function startGame() {
+    document.getElementById("startGame").style.display = "none";
+    intervalCounter = setInterval(timeIt, 1000);
+}
+
 function timeIt() {
     counter--;
-    console.log(counter);
     document.getElementById("counter").innerHTML = counter;
     if (counter == 0) {
-        clearInterval(interval);
+        clearInterval(intervalCounter);
         test();
     }
 }
 
-function startGame() {
-
-
-    document.getElementById("startGame").style.display = "none";
-    interval = setInterval(timeIt, 1000);
-}
-
 function test() {
-    var maxX = document.getElementsByTagName('body')[0].clientWidth
-    var maxY = document.getElementsByTagName('body')[0].clientLength
-    var randomX = Math.random() * maxX;
+    var randomNumber = Math.random()
+    var randomX = Math.floor( randomNumber * Math.floor(maxX));
     while(randomX == 0) {
-        randomX = Math.random() * maxX;
+        randomNumber = Math.random();
+        randomX = randomNumber * maxX;
     }
-    document.getElementById("ball").style.left = randomX + "px";
     document.getElementById("bar").style.display = "inline";
-    document.getElementById("ball").style.display = "inline";
     document.getElementById("counter").style.display = "none";
+    var canvas = document.getElementById("gameCanvas");
+    canvas.width = maxX;
+    canvas.height = maxY;
+    x = randomX;
+    setInterval(drawBall, 10);
 }
 
+function drawBall() {
+    var canvas = document.getElementById("gameCanvas");
+    var context = canvas.getContext('2d');
+    var bar = document.getElementById("bar");
+    var rect = bar.getBoundingClientRect();
+    var right = rect.right;
+    var left = rect.left;
+    var top = rect.top;
+    var bottom = rect.bottom;
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.beginPath();
+    context.arc(x , y,10,0,Math.PI*2,true);
+    context.closePath();
+    context.fill();
+    if(x < right && x > left && y < top && y > bottom) {
+        dx=-dx
+        dy=-dy;
+    }
+    x+=dx;
+    y+=dy;
+    if (x < 0 || x > maxX) dx=-dx
+    if (y < 0 ) dy=-dy;
+}
 
 function handleOrientation(event) {
     var bar = document.getElementById("bar");
-    var maxX = document.getElementsByTagName('body')[0].clientWidth
-    var maxY = document.getElementsByTagName('body')[0].clientLength
+    var maxX = screen.width
+    var maxY = screen.length
     var boundry = maxX - 64;
     var rotation = event.gamma;
     var pixels = ((rotation / 90) * maxX)
@@ -43,6 +74,5 @@ function handleOrientation(event) {
         bar.style.left = position + "px";
     }
 }
-
 
 window.addEventListener("deviceorientation", handleOrientation, true);

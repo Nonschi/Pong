@@ -9,18 +9,6 @@
   display: none;
 }
 
-#ball {
-    position: absolute;
-    top  : 10%;
-    left  : 50%;
-    width : 20px;
-    height: 20px;
-    background: black;
-    border-radius: 100%;
-    display: none;
-}
-
-
 #startGame {
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
@@ -35,4 +23,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#counter {
+    font-variant-numeric: tabular-nums;
+     font-size: 200px;
+}
+
+#gameCanvas {
+    background-color: white;
 }
