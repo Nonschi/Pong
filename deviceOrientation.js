@@ -8,11 +8,11 @@ function handleOrientation(event) {
     var rotation = event.gamma;
     var pixels = ((rotation / 90) * maxX)
     var position = ((rotation / 90) * maxX) + (maxX / 2)
-    document.getElementById("clientWidth").innerHTML = "clientWidth is: " + (maxX - 64);
+    document.getElementById("clientWidth").innerHTML = "clientWidth is: " + maxX;
     document.getElementById("testing-new-position").innerHTML = "new position is:" + position;
     document.getElementById("testing-rotation").innerHTML = "rotations are:" + rotation;
     document.getElementById("testing-pixels").innerHTML = "pixels are:" + pixels;
-    if(position > 0 && (position) < (maxX - 64)) {
+    if(position > 0 && (position) < (maxX) {
         bar.style.left = position + "px";
     }
 }
