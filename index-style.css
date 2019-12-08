@@ -10,10 +10,23 @@
 
 #ball {
     position: absolute;
-    bottom   : 50%;
+    top  : 10%;
     left  : 50%;
-    width : 10px;
-    height: 10px;
+    width : 20px;
+    height: 20px;
     background: black;
     border-radius: 100%
+}
+
+#startGame {
+    background: #eb94d0
+    border: 0;
+color: black;
+font-family: 'Open Sans', sans-serif;
+font-weight: 600;
+    position: absolute;
+    top  : 50%;
+    left  : 50%;
+    width : 200px;
+    height: 30px;
 }
