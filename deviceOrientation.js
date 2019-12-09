@@ -70,7 +70,7 @@ function drawBall() {
         clearInterval(intervalBall);
         reset();
     }
-    if(x <= right - 5 && x >= left && y >= top - 15) {
+    if(x <= right - 5 && x >= left - 5 && y >= top - 15) {
         dx=-dx
         dy=-dy;
         score++;
