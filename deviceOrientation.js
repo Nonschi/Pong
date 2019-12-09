@@ -66,11 +66,11 @@ function drawBall() {
     context.fill();
     console.log(y);
     console.log()
-    if (y >= $(window).height() || y < bottom) {
+    if (y >= $(window).height()) {
         clearInterval(intervalBall);
         reset();
     }
-    if(x <= right - 5 && x >= left - 5 && y >= top - 15) {
+    if(x <= right - 5 && x >= left - 5 && y >= top - 15 && y && bottom - 20) {
         dx=-dx
         dy=-dy;
         score++;
@@ -79,7 +79,7 @@ function drawBall() {
             dx--;
             dy--;
         }
-    document.getElementById("score").innerHTML = "score: " + score;
+    document.getElementById("score").innerHTML = "Score: " + score;
     }
     y+=dy;
     x+=dx;
