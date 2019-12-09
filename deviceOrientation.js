@@ -35,7 +35,7 @@ function test() {
     canvas.width = maxX;
     canvas.height = maxY;
     x = randomX;
-    setInterval(drawBall, 10);
+    intervalBall = setInterval(drawBall, 10);
 }
 
 function drawBall() {
@@ -52,14 +52,25 @@ function drawBall() {
     context.arc(x , y,10,0,Math.PI*2,true);
     context.closePath();
     context.fill();
-    if(x < right) {
+    console.log(y);
+    if(x <= right && x >= left && y >= top) {
         dx=-dx
         dy=-dy;
+    }
+    if (y > maxY) {
+        reset();
     }
     x+=dx;
     y+=dy;
     if (x < 0 || x > maxX) dx=-dx
     if (y < 0 ) dy=-dy;
+}
+
+function reset() {
+    var canvas = document.getElementById("gameCanvas");
+    var context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    clearInterval(intervalBall);
 }
 
 function handleOrientation(event) {
