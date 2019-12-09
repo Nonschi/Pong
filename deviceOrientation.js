@@ -1,21 +1,29 @@
-var counter = 4;
+var counter;
 var intervalCounter;
 var intervalBall;
 var maxY = screen.height
 var maxX = screen.width
-var dx=5;
-var dy=5;
+var dx;
+var dy;
 var x;
-var y = 100;
+var y;
+var score;
 
 function startGame() {
+    score = 0;
+    y = 100;
+    counter = 4;
+    dy = 3;
+    dx = 3
     document.getElementById("startGame").style.display = "none";
+    document.getElementById("final-score").style.display = "none";
     intervalCounter = setInterval(timeIt, 1000);
 }
 
 function timeIt() {
     counter--;
     document.getElementById("counter").innerHTML = counter;
+    document.getElementById("counter").style.display = "inline";
     if (counter == 0) {
         clearInterval(intervalCounter);
         test();
@@ -31,6 +39,7 @@ function test() {
     }
     document.getElementById("bar").style.display = "inline";
     document.getElementById("counter").style.display = "none";
+    document.getElementById("score").style.display = "inline";
     var canvas = document.getElementById("gameCanvas");
     canvas.width = maxX;
     canvas.height = maxY;
@@ -53,12 +62,19 @@ function drawBall() {
     context.closePath();
     context.fill();
     console.log(y);
+    if (y >= maxY) {
+        clearInterval(intervalBall);
+        reset();
+    }
     if(x <= right && x >= left && y >= top) {
         dx=-dx
         dy=-dy;
-    }
-    if (y > maxY) {
-        reset();
+        score++;
+        document.getElementById("score").innerHTML = "score: " + score;
+        if(score % 5 == 0) {
+            dx++;
+            dy++;
+        }
     }
     x+=dx;
     y+=dy;
@@ -70,7 +86,12 @@ function reset() {
     var canvas = document.getElementById("gameCanvas");
     var context = canvas.getContext('2d');
     context.clearRect(0, 0, canvas.width, canvas.height);
-    clearInterval(intervalBall);
+    document.getElementById("bar").style.display = "none";
+    document.getElementById("startGame").style.display = "inline-block";
+    document.getElementById("final-score").style.display = "inline";
+    document.getElementById("startGame").innerHTML = "Let's go Again!"
+    document.getElementById("final-score").innerHTML = "Your final score is: " + score
+    document.getElementById("score").style.display = "none";
 }
 
 function handleOrientation(event) {
