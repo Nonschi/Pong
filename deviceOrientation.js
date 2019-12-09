@@ -43,6 +43,8 @@ function test() {
     var canvas = document.getElementById("gameCanvas");
     canvas.width = maxX;
     canvas.height = maxY;
+    var canvas = document.getElementById("gameCanvas");
+    var context = canvas.getContext('2d');
     x = randomX;
     intervalBall = setInterval(drawBall, 10);
 }
@@ -58,23 +60,25 @@ function drawBall() {
     var bottom = rect.bottom;
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.beginPath();
-    context.arc(x , y,10,0,Math.PI*2,true);
+    context.arc(x, y,10,0,Math.PI*2,true);
     context.closePath();
     context.fill();
     console.log(y);
-    if (y >= maxY) {
+    console.log()
+    if (y >= $(window).height()) {
         clearInterval(intervalBall);
         reset();
     }
-    if(x <= right - 5 && x >= left + 5  && y >= top) {
+    if(x <= right - 5 && x >= left + 5 && y >= top-15) {
         dx=-dx
         dy=-dy;
         score++;
-        document.getElementById("score").innerHTML = "score: " + score;
-        if(score % 5 == 0) {
-            dx++;
-            dy++;
+        if(score % 3 == 0 && score != 0) {
+            console.log("OH")
+            dx--;
+            dy--;
         }
+    document.getElementById("score").innerHTML = "score: " + score;
     }
     x+=dx;
     y+=dy;
