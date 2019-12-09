@@ -39,6 +39,7 @@ function test() {
     }
     document.getElementById("bar").style.display = "inline";
     document.getElementById("counter").style.display = "none";
+    document.getElementById("score").innerHTML = "Score: " + score;
     document.getElementById("score").style.display = "inline";
     var canvas = document.getElementById("gameCanvas");
     canvas.width = maxX;
@@ -65,11 +66,11 @@ function drawBall() {
     context.fill();
     console.log(y);
     console.log()
-    if (y >= $(window).height()) {
+    if (y >= $(window).height() || y < bottom) {
         clearInterval(intervalBall);
         reset();
     }
-    if(x <= right - 5 && x >= left && y >= top-15) {
+    if(x <= right - 5 && x >= left && y >= top - 15) {
         dx=-dx
         dy=-dy;
         score++;
