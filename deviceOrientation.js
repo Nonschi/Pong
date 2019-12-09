@@ -69,7 +69,7 @@ function drawBall() {
         clearInterval(intervalBall);
         reset();
     }
-    if(x <= right - 5 && x >= left + 5 && y >= top-15) {
+    if(x <= right - 5 && x >= left && y >= top-15) {
         dx=-dx
         dy=-dy;
         score++;
@@ -80,8 +80,8 @@ function drawBall() {
         }
     document.getElementById("score").innerHTML = "score: " + score;
     }
-    x+=dx;
     y+=dy;
+    x+=dx;
     if (x < 0 || x > maxX) dx=-dx
     if (y < 0 ) dy=-dy;
 }
